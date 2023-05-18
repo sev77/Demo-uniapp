@@ -1,4 +1,4 @@
-# demo-text
+# 基于 uniapp + Vue2 的手机多端模板
 
 ## Project setup
 ```
