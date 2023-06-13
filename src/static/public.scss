@@ -11,20 +11,21 @@ view , input{ font-size: 0; box-sizing: border-box; }
 image{ width:100%; height: auto; }
 
 /************************************** 公用层 ****************************************/
+.public{
 
-.public-phone , .public-scenes , .public-content , .public-float , .public-full { width:100%; height:100%; position: absolute; top: 0; left: 0; overflow: hidden; }
+  &-phone , &-scenes , &-content , &-float , &-full { width:100%; height:100%; position: absolute; top: 0; left: 0; overflow: hidden; }
 
-/**撑满屏幕**/
-.public-phone{ width: 100vw; height: 100vh; }
-
-/* 场景层 */
-.public-scenes{ background: $white; }
-/* 内容层 */
-.public-content
-/* 浮层 */
-.public-float{ background: rgba(0, 0, 0, 0.7); }
-/* 撑满父级 */
-.public-full{ overflow: initial; }
+  /**撑满屏幕**/
+  &-phone{ width: 100vw; height: 100vh; }
+  /* 场景层 */
+  &-scenes{ background: $white; }
+  /* 内容层 */
+  &-content
+  /* 浮层 */
+  &-float{ background: rgba(0, 0, 0, 0.7); }
+  /* 撑满父级 */
+  &-full{ overflow: initial; }
+}
 
 /************************************** 样式库 **************************************/
 
@@ -52,12 +53,48 @@ image{ width:100%; height: auto; }
 .radius-half{ border-radius: 50%; }
 
 // 居中
-.center-text{ width: 100%; text-align: center; }
+.center{
+  &-text{ width: 100%; text-align: center; }
 
-.center-posi-x{ position: absolute; left: 50%; transform: translateX(-50%); }
-.center-posi-y{ position: absolute; top: 50%; transform: translateY(-50%); }
-.center-posi-xy{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+  // 绝对定位
+  &-posi-x{ position: absolute; left: 50%; transform: translateX(-50%); }
+  &-posi-y{ position: absolute; top: 50%; transform: translateY(-50%); }
+  &-posi-xy{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+  
+  // flex定位
+  &-flex-x{ display: flex; justify-content: center; }
+  &-flex-y{ display: flex; align-items: center; }
+  &-flex-y-all{ display: flex; align-content: center; }
+  &-flex-single{ display: flex; justify-content: center; align-items: center; }
+  &-flex-all{ display: flex; justify-content: center; align-content: center; }
+}
 
-.center-flex-whole{ display: flex; justify-content: center; align-items: center; }
-.center-flex-x{ display: flex; justify-content: center; }
-.center-flex-y{ display: flex; align-items: center; }
+// 行内对齐
+.align{
+  &-top{ display: inline-block; vertical-align: top; }
+  &-center{ display: inline-block; vertical-align: center; }
+  &-bottom{ display: inline-block; vertical-align: bottom; }
+}
+
+// 特殊样式
+/*券上边的半圆形-左右*/
+.copon-semicircle{ filter:drop-shadow(-2.08px 16.67px 41.67px rgba(80, 212, 122, 0.46)); background:radial-gradient(circle at center left,transparent 10px, #fff 0) left,radial-gradient(circle at center right,transparent 10px, #fff 0) right;background-size:50% 100%;background-repeat:no-repeat; }
+
+/* 清除浮动 */
+.clear-float:after{ content: ""; display: block; clear: both; }
+
+/* 动画名称-动画时间-延迟时间-动画次数-动画速度 */
+/**旋转**/
+.goodsrotate{ -webkit-animation: goodsrotate 2500ms 0ms infinite linear both; }
+@keyframes goodsrotate{
+    0%{ transform: rotate(0deg); }
+  100%{ transform: rotate(360deg); }
+}
+
+/* 指示点样式在公共样式才管用 */
+/**指示点父级**/
+.swiper .wx-swiper-dots.wx-swiper-dots-horizontal{ margin-bottom: 20rpx; }
+/**默认指示点**/
+.swiper .wx-swiper-dot{ width:7rpx; height: 7rpx; margin-left: 12rpx; border-radius: 50%; }
+/**选中指示点**/
+.swiper .wx-swiper-dot-active { width: 42rpx; height: 7rpx; border-radius: 10rpx; }
