@@ -54,8 +54,8 @@ export default {
 			title: 'Hello'
 		}
 	},
-	onLoad() {
-
+	async onLoad() {
+		console.log('-----------------', await this.$format.date.getCurrentDown('2023.05.30', ''))
 	},
 	methods: {
 
